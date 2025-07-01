@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Physique",
+    "bonuses": {
+      "hp": 0.2
+    }
+  },
+  {
+    "name": "Gladiator resolve",
+    "bonuses": {
+      "hp": 0.4
+    }
+  },
+  {
+    "name": "Nira's Hatred",
+    "bonuses": {
+      "hp": 0.35
+    }
+  },
+  {
+    "name": "Carnis Carapace",
+    "bonuses": {
+      "hp": 0.2,
+      "armor": 0.55
+    }
+  }
+]
