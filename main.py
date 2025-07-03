@@ -4,7 +4,7 @@ from typing import List
 
 import PySimpleGUI as sg
 
-from app.elements import render_stats
+from app.elements import render_stats, render_equipments
 from app.models import Stats, Equipment, Modifiers
 
 
@@ -29,15 +29,25 @@ def run_app():
         [
             sg.Column(render_stats(base_stats, 'Base statistics')),
             sg.Column(render_stats(modified_stats, 'Modified statistics')),
-            sg.VSeparator()
+            sg.VSeparator(),
+            sg.Column(render_equipments(equipments), scrollable=True, vertical_scroll_only=True, size=(600, 300)),
         ]
     ]
-    window = sg.Window('Verns are best', layout, size=(800, 600))
+    window = sg.Window('Verns are best', layout)
     while True:
         event, values = window.read()
 
         if event == sg.WIN_CLOSED:
             break
+
+        # React to checkbox toggles
+        if isinstance(event, str) and event.startswith("-TOGGLE-EQUIP-"):
+            try:
+                index_of_equipment_to_toggle = int(event.split("-")[3])#boy this is ugly///
+                equipments[index_of_equipment_to_toggle].is_equipped = values[event]
+                print(f"{equipments[index_of_equipment_to_toggle].name} is_equipped = {equipments[index_of_equipment_to_toggle].is_equipped}")
+            except (IndexError, ValueError):
+                pass  # Just in case the key is malformed
 
     window.close()
 

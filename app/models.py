@@ -27,3 +27,4 @@ class Modifiers:
 class Equipment:
     name:str
     bonuses: Modifiers
+    is_equipped: bool = False
