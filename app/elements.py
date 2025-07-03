@@ -4,7 +4,6 @@ from PySimpleGUI import Element
 
 from app.models import Stats
 
-
 def render_stats(stats: Stats, header: str) -> List[List[Element]]:
     return [
         [sg.Text(header)],
